@@ -1,0 +1,24 @@
+{
+    "name": "rvzhi/task",
+    "description": "基于think-queue的任务插件",
+    "type": "library",
+    "require": {
+        "topthink/think-queue": "^3.0",
+        "topthink/think-migration": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "rztask\\": "src/"
+        }
+    },
+    "extra": {
+        "think": {
+            "services": [
+                "rztask\\Service"
+            ],
+            "config": {
+                "task": "src/config.php"
+            }
+        }
+    }
+}

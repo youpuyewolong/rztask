@@ -1,0 +1,14 @@
+<?php
+
+namespace NameSpace;
+
+
+use rztask\task\BaseTask;
+class ServiceName extends BaseTask {
+
+    protected function do_task_handle($param){
+        echo "真正处理业务逻辑的地方".PHP_EOL;
+        dump($param);
+        return 'ok';
+    }
+}
