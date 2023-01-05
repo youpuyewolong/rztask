@@ -20,17 +20,7 @@ use think\queue\Listener;
 
 class Listen extends Command
 {
-    /** @var  Listener */
-    protected $listener;
 
-    public function __construct(Listener $listener)
-    {
-        parent::__construct();
-        $this->listener = $listener;
-        $this->listener->setOutputHandler(function ($type, $line) {
-            $this->output->write($line);
-        });
-    }
 
     protected function configure()
     {
@@ -53,6 +43,7 @@ class Listen extends Command
         $sleep   = $input->getOption('sleep');
         $tries   = $input->getOption('tries');
 
-        $this->listener->listen($connection, $queue, $delay, $sleep, $tries, $memory, $timeout);
+        $listener = new Listener($this->app->getRootPath());
+        $listener->listen($connection, $queue, $delay, $sleep, $tries, $memory, $timeout);
     }
 }
